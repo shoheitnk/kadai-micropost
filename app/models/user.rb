@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   # favourite 機能
   def favourite(micropost)
-    Favourite.find_or_create_by(uesr_id: self.id, micropost_id: micropost.id)
+    Favourite.find_or_create_by(user_id: self.id, micropost_id: micropost.id)
   end
   
   def unfavourite(micropost)

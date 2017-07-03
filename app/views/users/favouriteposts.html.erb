@@ -1,0 +1,28 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @user.name %></h3>
+      </div>
+      <div class="panel-body">
+        <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+      </div>
+    </div>
+    <%= render 'relationships/follow_button', user: @user %>
+  </aside>
+  <div class="col-xs-8">
+    <ul class="nav nav-tabs nav-justified">
+      <li>
+        <%= link_to root_path do %>Timelines <span class="badge"></span>
+        <%= render 'microposts/microposts', microposts: @microposts, user: @user %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to favoriteposts_user_path(@user) do %>Favorites <span class="badge"><%= @count_favorites %></span>
+        <%= render 'microposts/microposts', microposts: @favoriteposts %>
+        <% end %>
+      </li>
+    </ul>
+    <%= render 'microposts/microposts', microposts: @microposts, user: @user %>
+  </div>
+</div>
